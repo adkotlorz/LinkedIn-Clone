@@ -1,11 +1,19 @@
 import React from 'react';
 //CSS Import
 import './App.css';
+//Components Imports
+import {Header, Sidebar} from './components';
 
 const App = () => {
     return (
         <div className="app">
-            <h1>LinkedIn Clone</h1>
+            <Header/>
+            {/*    App Body*/}
+            <div className="app__body">
+                <Sidebar/>
+                {/* Feed   */}
+                {/* Widgets   */}
+            </div>
         </div>
     );
 }
