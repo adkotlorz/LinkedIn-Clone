@@ -2,7 +2,7 @@ import React from 'react';
 //CSS Import
 import './App.css';
 //Components Imports
-import {Header, Sidebar} from './components';
+import {Feed, Header, Sidebar} from './components';
 
 const App = () => {
     return (
@@ -11,7 +11,7 @@ const App = () => {
             {/*    App Body*/}
             <div className="app__body">
                 <Sidebar/>
-                {/* Feed   */}
+                <Feed/>
                 {/* Widgets   */}
             </div>
         </div>
