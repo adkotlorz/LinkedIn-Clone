@@ -4,7 +4,7 @@ import './Login.css';
 //Redux
 import {useDispatch} from 'react-redux';
 import {login} from '../store/userSlice';
-//Auth Import
+//FB Import
 import {auth} from '../db/firebase';
 
 

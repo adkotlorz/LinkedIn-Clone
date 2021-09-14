@@ -2,8 +2,8 @@ import React from 'react';
 //CSS Import
 import './Header.css';
 //Redux
-import {useDispatch} from 'react-redux';
-import {logout} from '../store/userSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout, selectUser} from '../store/userSlice';
 //FB
 import {auth} from '../db/firebase';
 //MUI Imports
@@ -16,13 +16,16 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import {Avatar} from '@material-ui/core';
 
 
-
 const HeaderOption = ({avatar, Icon, title, onClick}) => {
+    const user = useSelector(selectUser);
+
     return (
         <div onClick={onClick} className="headerOption">
             {Icon && <Icon className="headerOption__icon"/>}
             {avatar && (
-                <Avatar className="headerOption__icon" src={avatar}/>
+                <Avatar className="headerOption__icon">
+                    {user?.email[0]}
+                </Avatar>
             )}
             <h3 className="headerOption__title">
                 {title}
@@ -57,7 +60,10 @@ const Header = () => {
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/>
                 <HeaderOption Icon={ChatIcon} title="Messaging"/>
                 <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
-                <HeaderOption onClick={logoutHandler} avatar="https://avatars.githubusercontent.com/u/74719696?v=4" title="Adam"/>
+                <HeaderOption
+                    avatar={true}
+                    onClick={logoutHandler}
+                    title="Adam"/>
             </div>
         </div>
     );

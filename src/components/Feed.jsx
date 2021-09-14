@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
 //FB Import
 import firebase from 'firebase';
+import {db} from '../db/firebase';
+//Redux
+import {selectUser} from '../store/userSlice';
+import {useSelector} from 'react-redux';
 //CSS Import
 import './Feed.css';
 //MUI Imports
@@ -11,7 +15,6 @@ import EventNoteIcon from '@material-ui/icons/EventNote';
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
 //Component Import
 import {Post} from './index';
-import {db} from '../db/firebase';
 
 
 export const InputOption = ({Icon, title, color}) => {
@@ -26,6 +29,7 @@ export const InputOption = ({Icon, title, color}) => {
 const Feed = () => {
     const [input, setInput] = useState('');
     const [posts, setPosts] = useState([]);
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         db.collection('posts')
@@ -44,10 +48,10 @@ const Feed = () => {
         e.preventDefault();
 
         db.collection('posts').add({
-            name: 'Adam',
-            description: 'test description',
+            name: user.displayName,
+            description: user.email,
             message: input,
-            photoURL: '',
+            photoURL: user.photoURL || '',
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
 
