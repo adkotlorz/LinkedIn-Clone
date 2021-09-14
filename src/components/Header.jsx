@@ -1,6 +1,11 @@
 import React from 'react';
 //CSS Import
 import './Header.css';
+//Redux
+import {useDispatch} from 'react-redux';
+import {logout} from '../store/userSlice';
+//FB
+import {auth} from '../db/firebase';
 //MUI Imports
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -10,9 +15,11 @@ import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import {Avatar} from '@material-ui/core';
 
-const HeaderOption = ({avatar, Icon, title}) => {
+
+
+const HeaderOption = ({avatar, Icon, title, onClick}) => {
     return (
-        <div className="headerOption">
+        <div onClick={onClick} className="headerOption">
             {Icon && <Icon className="headerOption__icon"/>}
             {avatar && (
                 <Avatar className="headerOption__icon" src={avatar}/>
@@ -25,6 +32,13 @@ const HeaderOption = ({avatar, Icon, title}) => {
 }
 
 const Header = () => {
+    const dispatch = useDispatch();
+
+    const logoutHandler = () => {
+        dispatch(logout());
+        auth.signOut();
+    }
+
     return (
         <div className="header">
             <div className="header__left">
@@ -34,7 +48,7 @@ const Header = () => {
                 />
                 <div className="header__search">
                     <SearchIcon/>
-                    <input/>
+                    <input placeholder="Search"/>
                 </div>
             </div>
             <div className="header__right">
@@ -43,7 +57,7 @@ const Header = () => {
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/>
                 <HeaderOption Icon={ChatIcon} title="Messaging"/>
                 <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
-                <HeaderOption avatar="https://avatars.githubusercontent.com/u/74719696?v=4" title="Adam"/>
+                <HeaderOption onClick={logoutHandler} avatar="https://avatars.githubusercontent.com/u/74719696?v=4" title="Adam"/>
             </div>
         </div>
     );
