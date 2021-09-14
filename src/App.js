@@ -7,7 +7,7 @@ import {login, logout, selectUser} from './store/userSlice';
 //FB Hooks
 import {auth} from './db/firebase';
 //Components Imports
-import {Feed, Header, Login, Sidebar} from './components';
+import {Feed, Header, Login, Sidebar, Widgets} from './components';
 
 
 const App = () => {
@@ -38,7 +38,7 @@ const App = () => {
                     <div className="app__body">
                         <Sidebar/>
                         <Feed/>
-                        {/* Widgets   */}
+                        <Widgets/>
                     </div>
                 )}
         </div>

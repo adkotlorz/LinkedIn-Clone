@@ -7,6 +7,8 @@ import {selectUser} from '../store/userSlice';
 import {useSelector} from 'react-redux';
 //CSS Import
 import './Feed.css';
+//Deps Import
+import FlipMove from 'react-flip-move';
 //MUI Imports
 import CreateIcon from '@material-ui/icons/Create';
 import ImageIcon from '@material-ui/icons/Image';
@@ -75,15 +77,17 @@ const Feed = () => {
                     <InputOption Icon={CalendarViewDayIcon} title="Write article" color="#7FC15E"/>
                 </div>
             </div>
-            {posts.map(({id, data: {name, description, photoURL, message}}) => (
-                <Post
-                    key={id}
-                    name={name}
-                    description={description}
-                    message={message}
-                    photoURL={photoURL}
-                />
-            ))}
+            <FlipMove>
+                {posts.map(({id, data: {name, description, photoURL, message}}) => (
+                    <Post
+                        key={id}
+                        name={name}
+                        description={description}
+                        message={message}
+                        photoURL={photoURL}
+                    />
+                ))}
+            </FlipMove>
         </div>
     );
 };

@@ -63,7 +63,7 @@ const Header = () => {
                 <HeaderOption
                     avatar={true}
                     onClick={logoutHandler}
-                    title="Adam"/>
+                    title='Adam'/>
             </div>
         </div>
     );
