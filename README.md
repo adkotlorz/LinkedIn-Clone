@@ -9,11 +9,14 @@ NPM v.6.14.12
 
 ## Dependencies
 
-[ReacJS](https://reactjs.org/)
+[ReactJS](https://reactjs.org/)
 
-[React Icons](https://react-icons.github.io/react-icons)
+[Redux](https://redux.js.org/)
 
-[Styled-components](https://styled-components.com/)
+[Firebase](https://firebase.google.com/)
+
+[Material-UI](https://material-ui.com/)
+
 
 ## How to?
 
