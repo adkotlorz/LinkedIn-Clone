@@ -1,5 +1,7 @@
 ![Preview](https://images91.fotosik.pl/537/d95ad5761b035e9b.png)
 
+## [Live Preview](https://linkedin-clone-ce1af.web.app/)
+
 
 # NodeJS & NPM versions
 
